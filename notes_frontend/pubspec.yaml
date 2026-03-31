@@ -40,6 +40,11 @@ dependencies:
   shared_preferences_android: 2.4.5
   sqflite_android: 2.4.0
 
+# The preview environment currently uses Flutter 3.29.x.
+# fl_chart >= 0.71.0 requires Flutter >= 3.30.0 and will break `flutter pub get`.
+dependency_overrides:
+  fl_chart: ">=0.70.2 <0.71.0"
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
