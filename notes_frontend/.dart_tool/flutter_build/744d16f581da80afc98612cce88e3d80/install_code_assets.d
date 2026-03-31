@@ -1,0 +1,1 @@
+ /home/kavia/workspace/code-generation/note-organizer-9603-9612-2494/notes_frontend/.dart_tool/flutter_build/744d16f581da80afc98612cce88e3d80/native_assets.json: 
