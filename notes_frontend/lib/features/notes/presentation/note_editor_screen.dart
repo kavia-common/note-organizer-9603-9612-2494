@@ -80,6 +80,8 @@ class _NoteEditorScreenState extends ConsumerState<NoteEditorScreen> {
       });
     }
 
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Note Organizer'),
@@ -101,32 +103,42 @@ class _NoteEditorScreenState extends ConsumerState<NoteEditorScreen> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(12),
-                  child: ListView(
-                    children: [
-                      TextField(
-                        controller: _titleController,
-                        decoration: const InputDecoration(
-                          labelText: 'Title',
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.surface,
+                      border: Border.all(color: theme.dividerColor),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    padding: const EdgeInsets.all(12),
+                    child: ListView(
+                      children: [
+                        TextField(
+                          controller: _titleController,
+                          decoration: const InputDecoration(
+                            labelText: 'Title',
+                          ),
+                          textInputAction: TextInputAction.next,
                         ),
-                      ),
-                      const SizedBox(height: 12),
-                      TextField(
-                        controller: _contentController,
-                        decoration: const InputDecoration(
-                          labelText: 'Content',
+                        const SizedBox(height: 12),
+                        TextField(
+                          controller: _contentController,
+                          decoration: const InputDecoration(
+                            labelText: 'Content',
+                            alignLabelWithHint: true,
+                          ),
+                          minLines: 12,
+                          maxLines: null,
                         ),
-                        minLines: 10,
-                        maxLines: null,
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surface,
-                  border: const Border(
-                    top: BorderSide(color: Color(0xFFE6E6E6)),
+                  color: theme.colorScheme.surface,
+                  border: Border(
+                    top: BorderSide(color: theme.dividerColor),
                   ),
                 ),
                 padding: const EdgeInsets.all(12),
