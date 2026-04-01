@@ -1,4 +1,4 @@
 {
     "command": "flutter build apk --release --target-platform android-x64",
-    "working_directory": "/home/kavia/workspace/code-generation/note-organizer-9603-9612/notes_frontend"
+    "working_directory": "/home/kavia/workspace/code-generation/note-organizer-9603-9612-2494/notes_frontend"
 }
