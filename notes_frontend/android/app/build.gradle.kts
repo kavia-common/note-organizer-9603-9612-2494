@@ -8,7 +8,9 @@ plugins {
 android {
     namespace = "com.example.notes_frontend"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    // Plugins used by this app currently require NDK 27.x.
+    // Pinning this here ensures CI/build machines select the compatible NDK.
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

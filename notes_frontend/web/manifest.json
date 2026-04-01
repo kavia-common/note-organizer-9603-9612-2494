@@ -1,0 +1,12 @@
+{
+  "name": "Notes",
+  "short_name": "Notes",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F9FAFB",
+  "theme_color": "#5E35B1",
+  "description": "Unified Flutter notes app",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "icons": []
+}
