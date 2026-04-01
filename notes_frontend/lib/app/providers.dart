@@ -8,6 +8,7 @@ import 'package:notes_frontend/features/notes/data/notes_repository.dart';
 import 'package:notes_frontend/features/sync/background_sync_scheduler.dart';
 import 'package:notes_frontend/features/sync/connectivity_monitor.dart';
 import 'package:notes_frontend/features/sync/in_memory_notes_sync_service.dart';
+import 'package:notes_frontend/features/sync/notes_sync_service.dart';
 import 'package:notes_frontend/features/sync/sync_engine.dart';
 import 'package:notes_frontend/shared/clock.dart';
 
@@ -87,15 +88,22 @@ final appBindingsProvider = Provider<void>((ref) {
   ref.onDispose(() => WidgetsBinding.instance.removeObserver(observer));
 
   // 2) Sync on offline -> online transition.
+  //
+  // Riverpod 3.x deprecates `.stream` on StreamProvider. Instead of subscribing
+  // to a stream here, we observe the AsyncValue and trigger work when it
+  // transitions from false -> true.
   bool? lastOnline;
-  final sub = ref.watch(isOnlineStreamProvider.stream).listen((isOnline) {
+  ref.listen<AsyncValue<bool>>(isOnlineStreamProvider, (previous, next) {
+    final isOnline = next.valueOrNull;
+    if (isOnline == null) return;
+
     final wasOnline = lastOnline;
     lastOnline = isOnline;
+
     if (wasOnline == false && isOnline == true) {
       unawaited(engine.syncNow(trigger: SyncTrigger.connectivityRegained));
     }
   });
-  ref.onDispose(sub.cancel);
 
   // 3) Best-effort background scheduling abstraction (safe no-op/foreground fallback).
   final scheduler = ForegroundResumedSyncScheduler(engine: engine);
