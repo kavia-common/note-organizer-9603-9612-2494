@@ -36,6 +36,7 @@ dependencies:
   flutter_riverpod: ^2.6.1
   shared_preferences: ^2.2.2
   intl: ^0.19.0
+  uuid: ^4.5.1
   cupertino_icons: ^1.0.8
   shared_preferences_android: 2.4.5
   sqflite_android: 2.4.0

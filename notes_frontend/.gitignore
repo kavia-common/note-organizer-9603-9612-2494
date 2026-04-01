@@ -1,1 +1,16 @@
-.env
+# Flutter/Dart/Pub
+.dart_tool/
+.packages
+.pub/
+build/
+
+# Platform
+ios/Flutter/
+ios/Pods/
+android/.gradle/
+android/local.properties
+
+# IDE
+.idea/
+.vscode/
+*.iml
