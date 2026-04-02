@@ -14,3 +14,7 @@ android/local.properties
 .idea/
 .vscode/
 *.iml
+
+# Override root .gitignore: .env is a required Flutter asset declared in pubspec.yaml.
+# Without this file, `flutter build` fails with "Failed to bundle asset files".
+!.env
