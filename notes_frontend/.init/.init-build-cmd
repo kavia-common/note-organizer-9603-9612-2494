@@ -1,2 +1,2 @@
-{ "working_directory": "/home/kavia/workspace/code-generation",
- "command": "flutter build web --release" }
+{ "working_directory": "/home/kavia/workspace/code-generation/note-organizer-9603-9612-2494/notes_frontend",
+ "command": "flutter pub get && flutter build apk" }
